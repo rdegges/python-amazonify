@@ -40,6 +40,10 @@ automatically.
 Have no idea what I'm talking about? See
 [Amazon's Affiliate Program](https://affiliate-program.amazon.com/gp/associates/network/main.html).
 
+Or...
+
+[Shop on Amazon!](http://www.amazon.com/?_encoding=UTF8&tag=rdegges-20&linkCode=ur2&camp=1789&creative=390957)
+
 
 ## Tests
 
