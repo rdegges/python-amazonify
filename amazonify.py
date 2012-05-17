@@ -27,7 +27,9 @@ def amazonify(url, affiliate_tag):
     if not new_url.netloc:
         return None
 
-    # Remove all querystrings from the URL:
-    new_url = new_url[:4] + ('',) + new_url[5:]
+    # Replace the original querystrings with our affiliate tag. Since all
+    # Amazon querystrings have no useful purpose, we can safely remove them and
+    # only add our affiliate tag.
+    new_url = new_url[:4] + ('tag=%s' % affiliate_tag,) + new_url[5:]
 
     return urlunparse(new_url)
