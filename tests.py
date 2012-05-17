@@ -5,6 +5,5 @@ from amazonify import amazonify
 
 class Amazonify(TestCase):
 
-    def test_amazonify_requires_url(self):
+    def test_requires_url(self):
         self.assertRaises(TypeError, amazonify)
-
