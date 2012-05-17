@@ -22,12 +22,12 @@ def amazonify(url, affiliate_tag):
         >>> print amazonify(url, tag)
         ...
     """
-    # Firstly, ensure the URL we're getting is valid:
+    # Ensure the URL we're getting is valid:
     new_url = urlparse(url)
     if not new_url.netloc:
         return None
 
-    # Secondly, remove all querystrings from the URL:
+    # Remove all querystrings from the URL:
     new_url = new_url[:4] + ('',) + new_url[5:]
 
     return urlunparse(new_url)
