@@ -24,3 +24,7 @@ class Amazonify(TestCase):
     def test_strips_original_querystrings(self):
         parsed_url = urlparse('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846?pf_rd_p=1367759962&pf_rd_s=right-4&pf_rd_t=101&pf_rd_i=507846&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=1216X6HJC7KEWY0X3VD7')
         self.assertNotIn(parsed_url.query, amazonify(parsed_url.geturl(), 'rdegges-20'))
+
+    def test_adds_affiliate_tag_as_a_querystring(self):
+        test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846?pf_rd_p=1367759962&pf_rd_s=right-4&pf_rd_t=101&pf_rd_i=507846&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=1216X6HJC7KEWY0X3VD7', 'rdegges-20')
+        self.assertEqual(urlparse(test_url).query, 'tag=rdegges-20')
