@@ -1,0 +1,2 @@
+include README.md requirements.txt tests.py UNLICENSE
+recursive-include assets *.jpg
