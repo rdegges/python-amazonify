@@ -21,7 +21,6 @@ def amazonify(url, affiliate_tag):
         >>> print amazonify(url, tag)
         ...
     """
-
     # Firstly, remove all querystrings from the URL:
     new_url = urlparse(url)
     new_url = new_url[:4] + ('',) + new_url[5:]
