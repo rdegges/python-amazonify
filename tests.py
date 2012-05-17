@@ -41,3 +41,9 @@ class Amazonify(TestCase):
         test_url = amazonify('https://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
         self.assertEqual(urlparse(test_url).scheme, 'https')
 
+    def test_doesnt_change_netloc(self):
+        test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
+        self.assertEqual(urlparse(test_url).netloc, 'www.amazon.com')
+
+        test_url = amazonify('http://www.amazon.co.uk/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
+        self.assertEqual(urlparse(test_url).netloc, 'www.amazon.co.uk')
