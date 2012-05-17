@@ -15,6 +15,9 @@ automatically.
 
 ## Usage
 
+Using ``amazonify`` is really easy. All you do is pass it the Amazon URL you'd
+like to make into an affiliate link, and your Amazon affiliate tag.
+
 ``` python
 >>> from amazonify import amazonify
 >>>
@@ -29,10 +32,18 @@ automatically.
 ...     'http://www.amazon.com/Canon-50mm-1-8-Camera-Lens/dp/B00007E7JU/ref=sr_1_1?ie=UTF8&qid=1337148688&sr=8-1',
 ...     'http://www.amazon.com/Canon-70-300mm-4-5-6-Lens-Cameras/dp/B0007Y794O/ref=sr_1_3?ie=UTF8&qid=1337148688&sr=8-3',
 ... ]
->>> affiliate_urls = [amazonify(u) for u in urls]
+>>> affiliate_urls = [amazonify(u, tag) for u in urls]
 >>> affiliate_urls
-['...', '...', '...', '...', '...']
+[
+    'http://www.amazon.com/Canon-21-1MP-Frame-Digital-Camera/dp/B001G5ZTLS/ref=sr_1_1?tag=rdegges-20',
+    'http://www.amazon.com/Transcend-Compact-Flash-Card-400X/dp/B002WE4H8I/ref=pd_bxgy_p_img_b?tag=rdegges-20',
+    'http://www.amazon.com/Canon-LP-E6-Battery-Digital-Cameras/dp/B001KELVS0/ref=pd_bxgy_e_img_b?tag=rdegges-20',
+    'http://www.amazon.com/Canon-50mm-1-8-Camera-Lens/dp/B00007E7JU/ref=sr_1_1?tag=rdegges-20',
+    'http://www.amazon.com/Canon-70-300mm-4-5-6-Lens-Cameras/dp/B0007Y794O/ref=sr_1_3?tag=rdegges-20'
+]
 ```
+
+**NOTE**: If the URL you try to ``amazonify`` is invalid, ``amazonify`` will return ``None``.
 
 
 ## Confused?
