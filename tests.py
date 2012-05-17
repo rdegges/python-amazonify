@@ -1,6 +1,10 @@
 from unittest import TestCase
 
+from amazonify import amazonify
+
 
 class Amazonify(TestCase):
 
-    pass
+    def test_amazonify_requires_url(self):
+        self.assertRaises(TypeError, amazonify)
+
