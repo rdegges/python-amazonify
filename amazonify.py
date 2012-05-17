@@ -2,4 +2,4 @@
 
 
 def amazonify(url, affiliate_tag):
-    pass
+    return url
