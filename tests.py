@@ -33,3 +33,11 @@ class Amazonify(TestCase):
         # Test it on a URL that has no querystring:
         test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
         self.assertEqual(urlparse(test_url).query, 'tag=rdegges-20')
+
+    def test_doesnt_change_scheme(self):
+        test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
+        self.assertEqual(urlparse(test_url).scheme, 'http')
+
+        test_url = amazonify('https://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
+        self.assertEqual(urlparse(test_url).scheme, 'https')
+
