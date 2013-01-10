@@ -21,7 +21,7 @@ setup(
     author = 'Randall Degges',
     author_email = 'rdegges@gmail.com',
     license = 'UNLICENSE',
-    url = 'https://github.com/rdegges/amazonify',
+    url = 'https://github.com/rdegges/python-amazonify',
     keywords = 'amazon affiliate web',
     description = 'The simplest way to build Amazon Affiliate links, in Python.',
     long_description = open(normpath(join(dirname(abspath(__file__)),
