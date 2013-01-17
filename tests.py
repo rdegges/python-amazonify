@@ -28,7 +28,7 @@ class Amazonify(TestCase):
     def test_adds_affiliate_tag_as_a_querystring(self):
         # Test it on a URL that already has a querystring:
         test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846?pf_rd_p=1367759962&pf_rd_s=right-4&pf_rd_t=101&pf_rd_i=507846&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=1216X6HJC7KEWY0X3VD7', 'rdegges-20')
-        self.assertEqual(urlparse(test_url).query, 'tag=rdegges-20')
+        self.assertNotEqual(-1, urlparse(test_url).query.find('tag=rdegges-20'))
 
         # Test it on a URL that has no querystring:
         test_url = amazonify('http://www.amazon.com/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
@@ -48,3 +48,10 @@ class Amazonify(TestCase):
 
         test_url = amazonify('http://www.amazon.co.uk/PostgreSQL-High-Performance-Gregory-Smith/dp/184951030X/ref=trdrt_tipp_dp_img_GWTB_507846', 'rdegges-20')
         self.assertEqual(urlparse(test_url).netloc, 'www.amazon.co.uk')
+
+    def test_promo_url_has_query_params(self):
+        # test a URL that contains mandatory query params
+        test_url = amazonify('http://www.amazon.co.uk/gp/feature.html?docId=1000577623&ie=UTF8', 'rdegges-20')
+        qs = urlparse(test_url).query
+        self.assertNotEqual(-1, qs.find('tag=rdegges-20'))
+        self.assertNotEqual(-1, qs.find('docId=1000577623'))
