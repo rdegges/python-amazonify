@@ -1,7 +1,8 @@
 """The simplest way to build Amazon Affiliate links, in Python."""
 
 
-from urlparse import urlparse, urlunparse
+from urlparse import urlparse, urlunparse, parse_qs
+from urllib import urlencode
 
 
 def amazonify(url, affiliate_tag):
@@ -27,9 +28,10 @@ def amazonify(url, affiliate_tag):
     if not new_url.netloc:
         return None
 
-    # Replace the original querystrings with our affiliate tag. Since all
-    # Amazon querystrings have no useful purpose, we can safely remove them and
-    # only add our affiliate tag.
-    new_url = new_url[:4] + ('tag=%s' % affiliate_tag,) + new_url[5:]
+    # Add or replace the original affiliate tag with our affiliate tag in the
+    # querystring. Leave everything else unchanged.
+    query_dict = parse_qs(new_url[4])
+    query_dict['tag'] = affiliate_tag
+    new_url = new_url[:4] + (urlencode(query_dict, True), ) + new_url[5:]
 
     return urlunparse(new_url)
