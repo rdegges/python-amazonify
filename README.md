@@ -32,7 +32,7 @@ like to make into an affiliate link, and your Amazon affiliate tag.
 ...     'http://www.amazon.com/Canon-50mm-1-8-Camera-Lens/dp/B00007E7JU/ref=sr_1_1?ie=UTF8&qid=1337148688&sr=8-1',
 ...     'http://www.amazon.com/Canon-70-300mm-4-5-6-Lens-Cameras/dp/B0007Y794O/ref=sr_1_3?ie=UTF8&qid=1337148688&sr=8-3',
 ... ]
->>> affiliate_urls = [amazonify(u, tag) for u in urls]
+>>> affiliate_urls = [amazonify(u, affiliate_tag) for u in urls]
 >>> affiliate_urls
 [
     'http://www.amazon.com/Canon-21-1MP-Frame-Digital-Camera/dp/B001G5ZTLS/ref=sr_1_1?tag=rdegges-20',
