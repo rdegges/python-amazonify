@@ -1,7 +1,7 @@
 """The simplest way to build Amazon Affiliate links, in Python."""
 
 
-from urlparse import urlparse, urlunparse, parse_qs
+from urllib.parse import urlparse, urlunparse, parse_qs
 from urllib import urlencode
 
 
